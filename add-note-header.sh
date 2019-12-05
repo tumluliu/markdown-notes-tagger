@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
-TAGS="tags: [Notebooks/小树]"
-TITLES="title: 2013-6-3小树妈妈笔记"
-CREATED="created: '2019-07-18T21:55:01.844Z'"
-MODIFIED="modified: '2019-11-24T21:20:05.929Z'"
-echo 'task goes here' | cat - todo.txt > temp && mv temp todo.txt
+NOTES_PATH=$1
+find $NOTES_PATH -type f -name "*.md" -print0 | while IFS= read -r -d '' file; do
+  echo "Adding tags to $file ..."
+  filename=$(basename -- "$file")
+  title="${filename%.*}"
+  notebook="$(basename "$(dirname "$(realpath "$file")")")"
+  mtime=$(date -r "$file" --iso-8601=seconds)
+  ctime=$mtime
+  TAGS="tags: [Notebooks/$notebook]"
+  TITLE="title: $title"
+  CREATED="created: '$ctime'"
+  MODIFIED="modified: '$mtime'"
+  touch -r "$file" timestamp
+  echo -e "---\n" | cat - "$file" > temp && mv temp "$file"
+  echo $MODIFIED | cat - "$file" > temp && mv temp "$file"
+  echo $CREATED | cat - "$file" > temp && mv temp "$file"
+  echo $TITLE | cat - "$file" > temp && mv temp "$file"
+  echo $TAGS | cat - "$file" > temp && mv temp "$file"
+  echo "---" | cat - "$file" > temp && mv temp "$file"
+  touch -r timestamp "$file"
+  echo done.
+done
+rm timestamp
