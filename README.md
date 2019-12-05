@@ -1,5 +1,34 @@
 # Markdown notes tagger
 
+## Feature
+
+- Only one feature: Insert metadata headers to markdown (with `.md` filename extension) files
+
+For example, the file `some note.md` located under `/some/path/notes/ideas/some note.md` with following contents
+
+```
+# This is a test note
+
+some note details
+```
+
+will become
+
+```
+---
+tags: [Notebooks/ideas]
+title: some note
+created: '2019-12-05T10:34:30+01:00'
+modified: '2019-12-05T10:34:30+01:00'
+---
+
+# This is a test note
+
+some note details
+```
+
+Please note that the script will *reserve* the modified time of the original files and use this timestamp for both the added `created` and `modified` headers.
+
 ## Usage
 
 Has been tested under:
