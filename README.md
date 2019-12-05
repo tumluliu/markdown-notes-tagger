@@ -29,18 +29,24 @@ some note details
 
 Please note that the script will *reserve* the modified time of the original files and use this timestamp for both the added `created` and `modified` headers.
 
-## Usage
+### Requirements and environments
+
+- `realpath`
 
 Has been tested under:
 
 - Ubuntu 18.04
 - GNU bash, version 4.4.20(1)-release (x86_64-pc-linux-gnu)
 
-run the following command
+## Usage
+
+Clone the repo and run the following command under the project path
 
 ```
-./add-note-header.sh NOTE_ROOT_PATH
+./add-note-header.sh $NOTE_ROOT_PATH
 ```
+
+where `$NOTE_ROOT_PATH` is the root path where note md files are stored.
 
 e.g. (also as a test)
 
