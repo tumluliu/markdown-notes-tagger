@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-NOTES_PATH=$1
+set -e
+
+NOTES_PATH=${1:-testbed}
 find $NOTES_PATH -type f -name "*.md" -print0 | while IFS= read -r -d '' file; do
   echo "Adding tags to $file ..."
   filename=$(basename -- "$file")
