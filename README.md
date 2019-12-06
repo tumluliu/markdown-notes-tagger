@@ -1,5 +1,7 @@
 # Markdown notes tagger
 
+**IMPORTANT NOTES: Please backup all your raw note files before processing with the script. Hint: use `cp` with `-a` option can preserve the original timestamps, as [this answer and its comment indicated](https://superuser.com/a/114198).**
+
 ## Feature
 
 - Only one feature: Insert metadata headers to markdown (with `.md` filename extension) files
@@ -27,7 +29,7 @@ modified: '2019-12-05T10:34:30+01:00'
 some note details
 ```
 
-Please note that the script will *reserve* the modified time of the original files and use this timestamp for both the added `created` and `modified` headers.
+Please note that the script will **preserve** the modified time of the original files and use this timestamp for both the added `created` and `modified` headers.
 
 ### Requirements and environments
 
@@ -56,7 +58,7 @@ e.g. (also as a test)
 
 ## Why do I need this tagger?
 
-To make some markdown note applications (like the awesome Notable) can read the notes organized as plain markdown files in such a directory structure as the `testbed` in this project:
+To make some markdown note applications (like the awesome [Notable app](https://notable.md/)) can read the notes organized as plain markdown files in such a directory structure as the `testbed` in this project:
 
 ```
 testbed/
